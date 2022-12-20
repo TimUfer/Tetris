@@ -3,7 +3,7 @@ package Model;
 public class GameLoop extends Thread {
     Model m = new Model();
     private boolean running = true;
-
+//kmk
     @Override
     public void run() {
         while (running) {
