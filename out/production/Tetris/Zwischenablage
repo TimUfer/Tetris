@@ -1,0 +1,43 @@
+/* public void drop(int row){
+        System.out.println(row);
+        if(row < -1){
+            for(int i:board[row]){
+                i = 0;
+            }
+            for(int j = row+1; j > 0; --j){
+                for(int k = 0; k < board[j].length; ++k){
+                    board[j][k] = board[j-1][k];
+                }
+            }
+        }
+
+    }*/
+
+
+    public void dropZeroRow(){
+            for(int j = board.length-1; j > 0; --j){
+                if(Arrays.stream(board[j]).sum() == 0){
+                    board[j] = board[j-1];
+                   // board[j-1] = new int[]{0,0,0,0,0,0,0,0,0,0};
+                }
+            }
+        }
+
+        package Model;
+
+        public class GameLoop extends Thread{
+            Model m = new Model();
+            @Override
+            public void run(){
+                try {
+                    while(/*game running*/){
+
+                        if(/*gegebenheiten (Kein Block in currentShapre oder boden erreicht*/ ){
+                            m.newTetrisPiece();
+                        } else{
+                            m.moveShape("down");
+                        }
+                    }
+                }
+            }
+        }
