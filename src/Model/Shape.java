@@ -85,35 +85,34 @@ public class Shape {
                     {0,0,0},
             };
             case 2 -> tempShape = new int[][]{
-                    {2,0,0},
-                    {2,0,0},
-                    {2,2,0},
-            };
-            case 3 -> tempShape = new int[][]{
-                    {3,0,0},
-                    {3,3,0},
-                    {0,3,0},
-            };
-            case 4 -> tempShape = new int[][]{
-                    {4,4,0},
-                    {4,4,0},
+                    {0,0,2},
+                    {2,2,2},
                     {0,0,0},
             };
+            case 3 -> tempShape = new int[][]{
+                    {3,3,0},
+                    {0,3,3},
+                    {0,0,0},
+            };
+            case 4 -> tempShape = new int[][]{
+                    {4,4},
+                    {4,4}
+            };
             case 5 -> tempShape = new int[][]{
-                    {5,0,0,0},
-                    {5,0,0,0},
-                    {5,0,0,0},
-                    {5,0,0,0}
+                    {0,5,0,0},
+                    {0,5,0,0},
+                    {0,5,0,0},
+                    {0,5,0,0}
             };
             case 6 -> tempShape = new int[][]{
-                    {0,6,0},
-                    {0,6,0},
-                    {6,6,0}
+                    {6,0,0},
+                    {6,6,6},
+                    {0,0,0}
             };
             case 7 -> tempShape = new int[][]{
-                    {0,0,7},
                     {0,7,7},
-                    {0,7,0}
+                    {7,7,},
+                    {0,0,0}
             };
             default -> System.out.println("Unusable value (Random int)" + shapeNR);
         }
