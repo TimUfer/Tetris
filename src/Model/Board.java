@@ -21,7 +21,10 @@ public class Board {
         //System.out.println(b.rowCleared());
     }
     private int[][] board = new int[24][10];
+    Board(){
+        //board[21] = new int[]{2,2,2,2,2,2,2,2,2,2};
 
+    }
     public int[][] getBoard(){
         return board;
     }

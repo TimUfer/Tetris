@@ -53,8 +53,8 @@ public class Shape {
             y = oldY;
         }
 
-        for (int i = 0; i < shape.length; i++) {
-            for (int j = 0; j < shape[i].length; j++) {
+        for (int i = 0; i < shape.length; ++i) {
+            for (int j = 0; j < shape[i].length; ++j) {
                 if (shape[i][j] != 0 && gameBoard[y + i][x + j] != 0) {
                     x = oldX;
                     y = oldY;
@@ -66,8 +66,8 @@ public class Shape {
 
     public void rotate() {
         int[][] rotatedShape = new int[shape.length][shape[0].length];
-        for (int i = 0; i < shape.length; i++) {
-            for (int j = 0; j < shape[i].length; j++) {
+        for (int i = 0; i < shape.length; ++i) {
+            for (int j = 0; j < shape[i].length; ++j) {
                 rotatedShape[j][shape.length - i - 1] = shape[i][j];
             }
         }
