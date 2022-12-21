@@ -55,7 +55,7 @@ public class Shape {
 
         for (int i = 0; i < shape.length; ++i) {
             for (int j = 0; j < shape[i].length; ++j) {
-                if (shape[i][j] != 0 && gameBoard[y + i][x + j] != 0) {
+                if (/*shape[i][j] != 0 &&*/ gameBoard[y + i][x + j] != 0) {
                     x = oldX;
                     y = oldY;
                     break;
@@ -111,7 +111,7 @@ public class Shape {
             };
             case 7 -> tempShape = new int[][]{
                     {0,7,7},
-                    {7,7,},
+                    {7,7,0},
                     {0,0,0}
             };
             default -> System.out.println("Unusable value (Random int)" + shapeNR);
