@@ -5,12 +5,17 @@ import java.util.Random;
 public class Shape {
     private int[][] shape;
     private int x,y;
+    private boolean collided = false;
     public Shape(int x, int y){
         this.shape = selectRandomShape();
         this.x = x;
         this.y = y;
     }
     public Shape(){
+    }
+
+    public boolean getIsCollided() {
+        return collided;
     }
 
     public int getX() {
@@ -58,6 +63,7 @@ public class Shape {
                 if (/*shape[i][j] != 0 &&*/ gameBoard[y + i][x + j] != 0) {
                     x = oldX;
                     y = oldY;
+                    collided = true;
                     break;
                 }
             }
@@ -77,7 +83,7 @@ public class Shape {
     int[][] selectRandomShape(){
         Random rand = new Random();
         int[][] tempShape = {};
-        int shapeNR = rand.nextInt(1,7);
+        int shapeNR = rand.nextInt(1,4);
         switch (shapeNR){
             case 1 -> tempShape = new int[][]{
                     {0,1,0},

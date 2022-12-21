@@ -65,7 +65,7 @@ public class Model {
     public boolean checkCollision(){
         boolean collisided = false;
         if(currentShape.getY() + currentShape.getShape().length >= grid.getBoard().length ||
-                grid.getBoard()[currentShape.getY() + 1][currentShape.getX()] != 0){
+                currentShape.getIsCollided()){
             collisided = true;
         }
         return collisided;
