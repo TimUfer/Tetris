@@ -41,3 +41,44 @@
                 }
             }
         }
+
+
+
+        // Check if the tetromino is colliding with the bottom of the grid
+                if (currentShape.getY() + currentShape.getShape().length >= grid.getBoard().length) {
+                    return true;
+                }
+
+                // Check if the tetromino is colliding with other blocks in the grid
+                boolean collision = false;
+                int a = 0;
+                int row = currentShape.getShape().length-1;
+                for(int j = row; j > 0;--j) {
+                    a +=1;
+                    for (int i = 0; i < currentShape.getShape()[row].length; ++i) {
+                        if (currentShape.getShape()[row][i] != 0) {
+                            if (grid.getBoard()[currentShape.getY() + row + a][currentShape.getX() + i] != 0) {
+                                collision = true;
+                            }
+                        }
+                    }
+                }
+
+                // If there are no collisions, return false
+                return collision;
+            }
+
+
+
+
+
+        int positionX = this.currentShape.getX(), positionY = this.currentShape.getY() + 1;
+
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                if (currentShape.getShape()[i][j] != 0) {
+                    if (this.grid.getBoard()[positionY + i][positionX + j] > 0) return true;
+                }
+            }
+        }
+        return false;

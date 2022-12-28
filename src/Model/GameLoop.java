@@ -9,19 +9,21 @@ public class GameLoop extends Thread {
 
     @Override
     public void run() {
-        m.newTetrisPiece();
-        m.addShape(m.getCurrentShape());
+
         while (running) {
             try {
-                if (m.checkCollision() || m.getCurrentShape() == null/*gegebenheiten (Kein Block in currentShapre oder boden erreicht*/) {
+                if(m.getCurrentShape() == null){
                     m.newTetrisPiece();
                     m.addShape(m.getCurrentShape());
-                } else {
-                    m.moveShape("down");
+                } else if (m.checkCollision2() || m.checkCollision()/*gegebenheiten (Kein Block in currentShapre oder boden erreicht*/) {
+                    m.newTetrisPiece();
+                    m.addShape(m.getCurrentShape());
                 }
+                    m.moveShape("down");
+
                 m.getGrid().testDraw();
                 //running = m.gameOver();
-                sleep(1000);
+                sleep(500);
             } catch (InterruptedException e){
                 e.printStackTrace();
 

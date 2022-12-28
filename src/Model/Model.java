@@ -46,14 +46,39 @@ public class Model {
     public Shape getCurrentShape() {
         return currentShape;
     }
+    public boolean checkCollision2() {
+        int row = currentShape.getShape().length - 1;
+        boolean bool = true;
+        while(bool){
+            if(Arrays.stream(currentShape.getShape()[row]).sum() == 0){
+                row -= 1;
+            } else{
+                bool = false;
+                for(int j = 0; j < currentShape.getShape()[row].length; ++j){
+                    if(currentShape.getShape()[row][j] != 0){
+                        if(grid.getBoard()[currentShape.getY() + row + 1][currentShape.getX() + j] != 0){
+                            return true;
+                        }
+                    }
+                }
+            }
+        } return false;
+    }
 
     public void addShape(Shape tetrisShape){
         for (int i = 0; i < tetrisShape.getShape().length; ++i) {
             for (int j = 0; j < tetrisShape.getShape()[i].length; ++j) {
                 int boardX = tetrisShape.getX() + j;
                 int boardY = (tetrisShape.getY() + i) ;
+
                 if (boardX >= 0 && boardX < grid.getBoard()[i].length && boardY >= 0 && boardY < grid.getBoard().length) {
-                    grid.getBoard()[boardY][boardX] = tetrisShape.getShape()[i][j];
+                    for (int n = 0; n < tetrisShape.getShape().length; n++) {
+                        for (int k = 0; k < tetrisShape.getShape()[n].length; k++) {
+                            if (tetrisShape.getShape()[n][k] != 0 && grid.getBoard()[n + tetrisShape.getY()][k + tetrisShape.getX()] == 0) {
+                                grid.getBoard()[n + tetrisShape.getY()][k + tetrisShape.getX()] = tetrisShape.getShape()[n][k];
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -64,7 +89,7 @@ public class Model {
     }
     public boolean checkCollision(){
         boolean collisided = false;
-        if(currentShape.getY() + currentShape.getShape().length >= grid.getBoard().length ||
+        if(currentShape.getY() + currentShape.getShape().length >= grid.getBoard().length -1 ||
                 currentShape.getIsCollided()){
             collisided = true;
         }

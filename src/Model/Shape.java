@@ -1,5 +1,6 @@
 package Model;
 
+import java.util.Arrays;
 import java.util.Random;
 
 public class Shape {
@@ -70,12 +71,21 @@ public class Shape {
         }
     }
 
+
     public void rotate() {
         int[][] rotatedShape = new int[shape.length][shape[0].length];
         for (int i = 0; i < shape.length; ++i) {
             for (int j = 0; j < shape[i].length; ++j) {
                 rotatedShape[j][shape.length - i - 1] = shape[i][j];
             }
+        }
+        if(Arrays.stream(rotatedShape[rotatedShape.length-1]).sum() == 0 && rotatedShape[0][1] != 4){
+            for(int i = 0; i < rotatedShape.length-1; ++i){
+                for(int j = 0; j < rotatedShape[i].length; ++j){
+                    rotatedShape[i][j] = rotatedShape[i-1][j];
+                }
+            }
+            Arrays.fill(rotatedShape[0],0);
         }
         shape = rotatedShape;
     }
@@ -86,19 +96,19 @@ public class Shape {
         int shapeNR = rand.nextInt(1,4);
         switch (shapeNR){
             case 1 -> tempShape = new int[][]{
+                    {0,0,0},
                     {0,1,0},
                     {1,1,1},
-                    {0,0,0},
             };
             case 2 -> tempShape = new int[][]{
+                    {0,0,0},
                     {0,0,2},
                     {2,2,2},
-                    {0,0,0},
             };
             case 3 -> tempShape = new int[][]{
+                    {0,0,0},
                     {3,3,0},
                     {0,3,3},
-                    {0,0,0},
             };
             case 4 -> tempShape = new int[][]{
                     {4,4},
@@ -111,14 +121,15 @@ public class Shape {
                     {0,5,0,0}
             };
             case 6 -> tempShape = new int[][]{
+                    {0,0,0},
                     {6,0,0},
-                    {6,6,6},
-                    {0,0,0}
+                    {6,6,6}
+
             };
             case 7 -> tempShape = new int[][]{
+                    {0,0,0},
                     {0,7,7},
-                    {7,7,0},
-                    {0,0,0}
+                    {7,7,0}
             };
             default -> System.out.println("Unusable value (Random int)" + shapeNR);
         }
