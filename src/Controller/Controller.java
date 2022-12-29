@@ -21,6 +21,8 @@ public class Controller implements InterfaceController{
     public void rotate(){
         model.rotate();
     }
-
+    public void startGame(){
+        model.startGame();
+    }
 
 }

@@ -32,7 +32,7 @@ public class Model {
             return true;
         }
     }
-    private void startGame(){
+    public void startGame(){
         loop = new GameLoop(this);
         loop.start();
     }
@@ -53,6 +53,9 @@ public class Model {
             } else{
                 bool = false;
                 for(int j = 0; j < currentShape.getShape()[row].length; ++j){
+                    if(currentShape.getShape()[row][j] == 0){
+                        continue;
+                    }
                     if(currentShape.getShape()[row][j] != 0){
                         if(grid.getBoard()[currentShape.getY() + row + 1][currentShape.getX() + j] != 0){
                             return true;

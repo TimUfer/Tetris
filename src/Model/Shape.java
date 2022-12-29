@@ -59,16 +59,7 @@ public class Shape {
             y = oldY;
         }
 
-        for (int i = 0; i < shape.length; ++i) {
-            for (int j = 0; j < shape[i].length; ++j) {
-                if (/*shape[i][j] != 0 &&*/ gameBoard[y + i][x + j] != 0) {
-                    x = oldX;
-                    y = oldY;
-                    collided = true;
-                    break;
-                }
-            }
-        }
+
     }
 
 
@@ -93,7 +84,7 @@ public class Shape {
     int[][] selectRandomShape(){
         Random rand = new Random();
         int[][] tempShape = {};
-        int shapeNR = rand.nextInt(1,4);
+        int shapeNR = rand.nextInt(1,7);
         switch (shapeNR){
             case 1 -> tempShape = new int[][]{
                     {0,0,0},
