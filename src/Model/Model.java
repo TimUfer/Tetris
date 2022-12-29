@@ -5,18 +5,16 @@ import java.util.Arrays;
 public class Model {
     public static void main(String[] args){
         Model m = new Model();
-        m.startGame();
-        /*m.newTetrisPiece();
-        System.out.println(m.currentShape.getY());
-
+        //m.startGame();
+        m.newTetrisPiece();
         m.addShape(m.currentShape);
         m.grid.testDraw();
-        //m.currentShape.rotate();
         m.rotate();
-
+        m.rotate();
         m.grid.testDraw();
+
         System.out.println(m.currentShape.getY());
-        */
+
     }
     private Board grid = new Board();
     private GameLoop loop;
@@ -85,6 +83,7 @@ public class Model {
     }
     public void rotate(){
         currentShape.rotate();
+        eraseCurrent();
         addShape(currentShape);
     }
     public boolean checkCollision(){
@@ -96,6 +95,12 @@ public class Model {
         return collisided;
     }
     public void moveShape(String dir){
+        eraseCurrent();
+        currentShape.move(dir,grid.getBoard()[0].length,grid.getBoard().length,grid.getBoard());
+        addShape(currentShape);
+    }
+
+    private void eraseCurrent(){
         lastShape.setShape(currentShape.getShape());
         lastShape.setX(currentShape.getX());
         lastShape.setY(currentShape.getY());
@@ -109,7 +114,5 @@ public class Model {
                 }
             }
         }
-        currentShape.move(dir,grid.getBoard()[0].length,grid.getBoard().length,grid.getBoard());
-        addShape(currentShape);
     }
 }

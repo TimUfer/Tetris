@@ -79,8 +79,8 @@ public class Shape {
                 rotatedShape[j][shape.length - i - 1] = shape[i][j];
             }
         }
-        if(Arrays.stream(rotatedShape[rotatedShape.length-1]).sum() == 0 && rotatedShape[0][1] != 4){
-            for(int i = 0; i < rotatedShape.length-1; ++i){
+       if(Arrays.stream(rotatedShape[rotatedShape.length-1]).sum() == 0 && rotatedShape[0][1] != 4){
+            for(int i = rotatedShape.length-1; i > 0 ; --i){
                 for(int j = 0; j < rotatedShape[i].length; ++j){
                     rotatedShape[i][j] = rotatedShape[i-1][j];
                 }
@@ -98,17 +98,17 @@ public class Shape {
             case 1 -> tempShape = new int[][]{
                     {0,0,0},
                     {0,1,0},
-                    {1,1,1},
+                    {1,1,1}
             };
             case 2 -> tempShape = new int[][]{
                     {0,0,0},
                     {0,0,2},
-                    {2,2,2},
+                    {2,2,2}
             };
             case 3 -> tempShape = new int[][]{
                     {0,0,0},
                     {3,3,0},
-                    {0,3,3},
+                    {0,3,3}
             };
             case 4 -> tempShape = new int[][]{
                     {4,4},
