@@ -39,7 +39,10 @@ public class Board {
         System.out.println("");
 
     }
-    void iterateZero(){
+    public void fullRow(){
+        drop(rowCleared());
+    }
+    public void iterateZero(){
         for(int i = (board.length - 1) - 4; i > 0; --i){
             if(Arrays.stream(board[i]).sum() == 0){
                 dropZeroRow(i);
@@ -65,8 +68,10 @@ public class Board {
     }
     public int rowCleared(){
         boolean bool;
+
         int row = -1;
         for(int i = 0; i < board.length; ++i) {
+            int count = 0;
             for (int j = 0; j < board[i].length; ++j) {
                 System.out.print(board[i][j]);
                 if (board[i][j] == 0) {
@@ -75,8 +80,11 @@ public class Board {
                     break;
                 } else {
                     bool = true;
-                    row = i;
+                    count++;
                 }
+            }
+            if(count == 10){
+                return i;
             }
             System.out.println("");
         }

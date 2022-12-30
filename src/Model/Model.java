@@ -44,6 +44,21 @@ public class Model {
     public Shape getCurrentShape() {
         return currentShape;
     }
+
+    public boolean checkCollision3(){
+        for (int i = 0; i < currentShape.getShape().length-1; ++i) {
+            for (int j = 0; j < currentShape.getShape()[i].length; ++j) {
+                if (currentShape.getShape()[i][j] != 0) {
+                    if (currentShape.getShape()[i + 1][j] == 0) {
+                        if (grid.getBoard()[currentShape.getY() + i + 1][currentShape.getX() + j] != 0) {
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+        return false;
+    }
     public boolean checkCollision2() {
         int row = currentShape.getShape().length - 1;
         boolean bool = true;

@@ -15,7 +15,8 @@ public class GameLoop extends Thread {
                 if(m.getCurrentShape() == null){
                     m.newTetrisPiece();
                     m.addShape(m.getCurrentShape());
-                } else if (m.checkCollision2() || m.checkCollision()/*gegebenheiten (Kein Block in currentShapre oder boden erreicht*/) {
+                } else if (m.checkCollision2() || m.checkCollision() || m.checkCollision3()/*gegebenheiten (Kein Block in currentShapre oder boden erreicht*/) {
+                    m.getGrid().fullRow();
                     m.newTetrisPiece();
                     m.addShape(m.getCurrentShape());
                 }

@@ -24,5 +24,8 @@ public class Controller implements InterfaceController{
     public void startGame(){
         model.startGame();
     }
+    public void fullRow(){
+        model.getGrid().fullRow();
+    }
 
 }

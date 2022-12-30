@@ -17,7 +17,6 @@ public class View extends PApplet implements InterfaceView{
     public void draw(){
         controller.update();
         drawBoard();
-        //keyReleased();
         testDraw();
     }
 
