@@ -1,5 +1,8 @@
 package Model;
 
+/**
+ * The GameLoop class represents the running game. Using Threads the game speed can be adjusted
+ */
 public class GameLoop extends Thread {
     private Model m;
     private boolean running = true;
@@ -8,6 +11,9 @@ public class GameLoop extends Thread {
     }
 
     @Override
+    /**
+     * The run-method starts the game, while the while-loop keeps it running
+     */
     public void run() {
 
         while (running) {

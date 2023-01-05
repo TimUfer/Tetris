@@ -2,7 +2,7 @@ package Model;
 
 import java.util.Arrays;
 
-public class Model {
+public class Model implements InterfaceModel {
     public static void main(String[] args){
         Model m = new Model();
         //m.startGame();
@@ -53,11 +53,11 @@ public class Model {
      * Getter-method for the current shape
      * @return Returns the current shape
      */
-    public Shape getCurrentShape() {
+    Shape getCurrentShape() {
         return currentShape;
     }
 
-    public boolean checkCollision3(){
+    boolean checkCollision3(){
         for (int i = 0; i < currentShape.getShape().length-1; ++i) {
             for (int j = 0; j < currentShape.getShape()[i].length; ++j) {
                 if (currentShape.getShape()[i][j] != 0) {
@@ -76,7 +76,7 @@ public class Model {
      * This method checks is the block has collided with another block
      * @return Returns wether the block has collided with another block or not
      */
-    public boolean checkCollision2() {
+    boolean checkCollision2() {
         int row = currentShape.getShape().length - 1;
         boolean bool = true;
         while(bool){
@@ -102,7 +102,7 @@ public class Model {
      * This method adds a shape to the game-board
      * @param tetrisShape Determines what shape is to be added
      */
-    public void addShape(Shape tetrisShape){
+    void addShape(Shape tetrisShape){
         for (int i = 0; i < tetrisShape.getShape().length; ++i) {
             for (int j = 0; j < tetrisShape.getShape()[i].length; ++j) {
                 int boardX = tetrisShape.getX() + j;
@@ -137,7 +137,7 @@ public class Model {
      * If so the local boolean variable is changed to true
      * @return Returns if the block has reached the bottom of the game-board
      */
-    public boolean checkCollision(){
+    boolean checkCollision(){
         boolean collisided = false;
         if(currentShape.getY() + currentShape.getShape().length >= grid.getBoard().length -1){
             collisided = true;

@@ -34,7 +34,7 @@ public class Board {
         return board;
     }
 
-    public void testDraw(){
+    void testDraw(){
         for(int[] ia: board){
             for(int i : ia){
                 System.out.print(i);
@@ -48,17 +48,17 @@ public class Board {
     /**
      * Clears a row when it is filled with digits other than zero
      */
-    public void fullRow(){
+    void fullRow(){
         drop(rowCleared());
     }
-    public void iterateZero(){
+    private void iterateZero(){
         for(int i = (board.length - 1) - 4; i > 0; --i){
             if(Arrays.stream(board[i]).sum() == 0){
                 dropZeroRow(i);
             }
         }
     }
-    public void dropZeroRow(int rowIndex) {
+    private void dropZeroRow(int rowIndex) {
         boolean isFilledWithZeros = true;
         for (int j = 0; j < board[rowIndex].length; ++j) {
             if (board[rowIndex][j] != 0) {

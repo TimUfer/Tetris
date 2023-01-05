@@ -1,11 +1,12 @@
 package Controller;
 
 import Model.Model;
+import Model.InterfaceModel;
 import View.View;
 import View.InterfaceView;
 
 public class Controller implements InterfaceController{
-    Model model;
+    InterfaceModel model;
     InterfaceView view;
 
     public Controller(InterfaceView view){
@@ -23,9 +24,6 @@ public class Controller implements InterfaceController{
     }
     public void startGame(){
         model.startGame();
-    }
-    public void fullRow(){
-        model.getGrid().fullRow();
     }
 
 }

@@ -27,7 +27,7 @@ public class Shape {
      * Getter-method for the X coordinate
      * @return Returns the X coordinate
      */
-    public int getX() {
+    int getX() {
         return x;
     }
 
@@ -35,21 +35,21 @@ public class Shape {
      * Setter-method for the X coordinate
      * @param x New X coordinate
      */
-    public void setX(int x) {
+    void setX(int x) {
         this.x = x;
     }
     /**
      * Getter-method for the Y coordinate
      * @return Returns the Y coordinate
      */
-    public int getY() {
+    int getY() {
         return y;
     }
     /**
      * Setter-method for the Y coordinate
      * @param y New X coordinate
      */
-    public void setY(int y) {
+    void setY(int y) {
         this.y = y;
     }
 
@@ -57,7 +57,7 @@ public class Shape {
      * Getter-method for the shape
      * @return returns the shape
      */
-    public int[][] getShape() {
+    int[][] getShape() {
         return shape;
     }
 
@@ -65,7 +65,7 @@ public class Shape {
      * Setter-method for the shape
      * @param shape The value, shape is set to
      */
-    public void setShape(int[][] shape) {
+    void setShape(int[][] shape) {
         this.shape = shape;
     }
 
@@ -75,7 +75,7 @@ public class Shape {
      * @param gameBoardWidth The width also determines the right-hand boarder for the game-board
      * @param gameBoardHeight The height determines the bottom boarder for the game-board
      */
-    public void move(String input, int gameBoardWidth, int gameBoardHeight) {
+    void move(String input, int gameBoardWidth, int gameBoardHeight) {
         int oldX = x;
         int oldY = y;
         if (input.equals("left")) {
@@ -108,7 +108,7 @@ public class Shape {
     /**
      * This method rotates the shape and makes sure that the bottom "line" is never filled with zeros
      */
-    public void rotate() {
+    void rotate() {
         int[][] rotatedShape = new int[shape.length][shape[0].length];
         for (int i = 0; i < shape.length; ++i) {
             for (int j = 0; j < shape[i].length; ++j) {
