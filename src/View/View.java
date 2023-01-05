@@ -11,7 +11,7 @@ public class View extends PApplet implements InterfaceView{
         view.runSketch(appArgs, view);
     }
     private int[][] gameBoard;
-    int boaderX = 50;
+    int boarderX = 50;
     int boarderY = 50;
     InterfaceController controller = new Controller(this);
 
@@ -23,7 +23,7 @@ public class View extends PApplet implements InterfaceView{
 
     public void setup(){
         controller.startGame();
-        background(color(255));
+        background(color(107, 87, 158));
     }
 
     public void settings(){
@@ -49,33 +49,30 @@ public class View extends PApplet implements InterfaceView{
             for (int j = 0; j < gameBoard[i].length; ++j) {
                 if (gameBoard[i][j] == 0) {
                     fill(color(200));
-                    rect(j * size, (i - 4) * size, size, size);
+                    rect(j * size + boarderX, (i - 4) * size + boarderY, size, size);
                 } else if (gameBoard[i][j] == 1) {
                     fill(color(100));
-                    rect(j * size, (i - 4) * size, size, size);
+                    rect(j * size + boarderX, (i - 4) * size+ boarderY, size, size);
                 } else if (gameBoard[i][j] == 2) {
                     fill(color(50));
-                    rect(j * size, (i - 4) * size, size, size);
+                    rect(j * size + boarderX, (i - 4) * size+ boarderY, size, size);
                 } else if (gameBoard[i][j] == 3) {
                     fill(color(150));
-                    rect(j * size, (i - 4) * size, size, size);
+                    rect(j * size + boarderX, (i - 4) * size+ boarderY, size, size);
                 } else if (gameBoard[i][j] == 4) {
                     fill(color(75));
-                    rect(j * size, (i - 4) * size, size, size);
+                    rect(j * size + boarderX, (i - 4) * size+ boarderY, size, size);
                 } else if (gameBoard[i][j] == 5) {
                     fill(color(10));
-                    rect(j * size, (i - 4) * size, size, size);
+                    rect(j * size + boarderX, (i - 4) * size+ boarderY, size, size);
                 } else if (gameBoard[i][j] == 6) {
                     fill(color(30));
-                    rect(j * size, (i - 4) * size, size, size);
+                    rect(j * size + boarderX, (i - 4) * size+ boarderY, size, size);
                 } else if (gameBoard[i][j] == 7) {
                     fill(color(230));
-                    rect(j * size, (i - 4) * size, size, size);
+                    rect(j * size + boarderX, (i - 4) * size+ boarderY, size, size);
                 }
-                if (gameBoard[i][j] == -1) {
-                    fill(color(255));
-                    rect(j * size, (i - 4) * size, size, size);
-                }
+
             }
         }
     }
