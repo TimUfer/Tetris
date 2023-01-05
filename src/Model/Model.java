@@ -32,15 +32,27 @@ public class Model {
             return true;
         }
     }
+
+    /**
+     * This method starts the game in the backend
+     */
     public void startGame(){
         loop = new GameLoop(this);
         loop.start();
     }
 
+    /**
+     * Get
+     * @return
+     */
     public Board getGrid() {
         return grid;
     }
 
+    /**
+     * Getter-method for the current shape
+     * @return Returns the current shape
+     */
     public Shape getCurrentShape() {
         return currentShape;
     }
@@ -59,6 +71,11 @@ public class Model {
         }
         return false;
     }
+
+    /**
+     * This method checks is the block has collided with another block
+     * @return Returns wether the block has collided with another block or not
+     */
     public boolean checkCollision2() {
         int row = currentShape.getShape().length - 1;
         boolean bool = true;
@@ -81,6 +98,10 @@ public class Model {
         } return false;
     }
 
+    /**
+     * This method adds a shape to the game-board
+     * @param tetrisShape Determines what shape is to be added
+     */
     public void addShape(Shape tetrisShape){
         for (int i = 0; i < tetrisShape.getShape().length; ++i) {
             for (int j = 0; j < tetrisShape.getShape()[i].length; ++j) {
@@ -88,8 +109,9 @@ public class Model {
                 int boardY = (tetrisShape.getY() + i) ;
 
                 if (boardX >= 0 && boardX < grid.getBoard()[i].length && boardY >= 0 && boardY < grid.getBoard().length) {
-                    for (int n = 0; n < tetrisShape.getShape().length; n++) {
-                        for (int k = 0; k < tetrisShape.getShape()[n].length; k++) {
+                    for (int n = 0; n < tetrisShape.getShape().length; ++n) {
+                        for (int k = 0; k < tetrisShape.getShape()[n].length; ++k) {
+                            if(tetrisShape.getShape()[n][k] == 0) continue;
                             if (tetrisShape.getShape()[n][k] != 0 && grid.getBoard()[n + tetrisShape.getY()][k + tetrisShape.getX()] == 0) {
                                 grid.getBoard()[n + tetrisShape.getY()][k + tetrisShape.getX()] = tetrisShape.getShape()[n][k];
                             }
@@ -99,22 +121,37 @@ public class Model {
             }
         }
     }
+
+    /**
+     * This method rotates the current shape by calling its own rotate-method, removes the shape and
+     * adds it with the new rotated-shape
+     */
     public void rotate(){
         currentShape.rotate();
         eraseCurrent();
         addShape(currentShape);
     }
+
+    /**
+     * This method checks if the current block has arrived at the bottom
+     * If so the local boolean variable is changed to true
+     * @return Returns if the block has reached the bottom of the game-board
+     */
     public boolean checkCollision(){
         boolean collisided = false;
-        if(currentShape.getY() + currentShape.getShape().length >= grid.getBoard().length -1 ||
-                currentShape.getIsCollided()){
+        if(currentShape.getY() + currentShape.getShape().length >= grid.getBoard().length -1){
             collisided = true;
         }
         return collisided;
     }
+
+    /**
+     * Removes the current block from the game-board, moves it and adds the block again with a new position
+     * @param dir Determines the direction in which the block is going to be moved
+     */
     public void moveShape(String dir){
         eraseCurrent();
-        currentShape.move(dir,grid.getBoard()[0].length,grid.getBoard().length,grid.getBoard());
+        currentShape.move(dir,grid.getBoard()[0].length,grid.getBoard().length);
         addShape(currentShape);
     }
 

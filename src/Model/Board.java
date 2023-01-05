@@ -25,6 +25,11 @@ public class Board {
         //board[21] = new int[]{2,2,2,2,2,2,2,2,2,2};
 
     }
+
+    /**
+     * Getter-method for the game-board
+     * @return Returns the game-board
+     */
     public int[][] getBoard(){
         return board;
     }
@@ -39,6 +44,10 @@ public class Board {
         System.out.println("");
 
     }
+
+    /**
+     * Clears a row when it is filled with digits other than zero
+     */
     public void fullRow(){
         drop(rowCleared());
     }
@@ -66,7 +75,7 @@ public class Board {
             Arrays.fill(board[0], 0);
         }
     }
-    public int rowCleared(){
+    private int rowCleared(){
         boolean bool;
 
         int row = -1;
@@ -91,7 +100,7 @@ public class Board {
         return row;
     }
 
-    public void drop(int row){
+    private void drop(int row){
         System.out.println(row);
         if(row > -1){
             // Vielleicht mit Streams

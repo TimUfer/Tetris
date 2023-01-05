@@ -1,4 +1,5 @@
 package View;
+import Controller.InterfaceController;
 import Controller.Controller;
 import processing.core.PApplet;
 import processing.core.PGraphics;
@@ -12,7 +13,7 @@ public class View extends PApplet implements InterfaceView{
     private int[][] gameBoard;
     int boaderX = 50;
     int boarderY = 50;
-    Controller controller = new Controller(this);
+    InterfaceController controller = new Controller(this);
 
     public void draw(){
         controller.update();
@@ -69,6 +70,10 @@ public class View extends PApplet implements InterfaceView{
                     rect(j * size, (i - 4) * size, size, size);
                 } else if (gameBoard[i][j] == 7) {
                     fill(color(230));
+                    rect(j * size, (i - 4) * size, size, size);
+                }
+                if (gameBoard[i][j] == -1) {
+                    fill(color(255));
                     rect(j * size, (i - 4) * size, size, size);
                 }
             }

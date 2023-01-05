@@ -3,10 +3,18 @@ package Model;
 import java.util.Arrays;
 import java.util.Random;
 
+/**
+ * The shape class represents a Tetris block
+ */
 public class Shape {
     private int[][] shape;
     private int x,y;
-    private boolean collided = false;
+
+    /**
+     * The constructor creates a new random shape by calling the selectRandomShape method
+     * @param x Initial X coordinate
+     * @param y Initial Y coordinate
+     */
     public Shape(int x, int y){
         this.shape = selectRandomShape();
         this.x = x;
@@ -15,35 +23,59 @@ public class Shape {
     public Shape(){
     }
 
-    public boolean getIsCollided() {
-        return collided;
-    }
-
+    /**
+     * Getter-method for the X coordinate
+     * @return Returns the X coordinate
+     */
     public int getX() {
         return x;
     }
 
+    /**
+     * Setter-method for the X coordinate
+     * @param x New X coordinate
+     */
     public void setX(int x) {
         this.x = x;
     }
-
+    /**
+     * Getter-method for the Y coordinate
+     * @return Returns the Y coordinate
+     */
     public int getY() {
         return y;
     }
-
+    /**
+     * Setter-method for the Y coordinate
+     * @param y New X coordinate
+     */
     public void setY(int y) {
         this.y = y;
     }
 
+    /**
+     * Getter-method for the shape
+     * @return returns the shape
+     */
     public int[][] getShape() {
         return shape;
     }
 
+    /**
+     * Setter-method for the shape
+     * @param shape The value, shape is set to
+     */
     public void setShape(int[][] shape) {
         this.shape = shape;
     }
 
-    public void move(String input, int gameBoardWidth, int gameBoardHeight, int[][] gameBoard) {
+    /**
+     * This method has access to the X and Y coordinates and can manipulate them if wanted
+     * @param input Determines in what direction the shape should move
+     * @param gameBoardWidth The width also determines the right-hand boarder for the game-board
+     * @param gameBoardHeight The height determines the bottom boarder for the game-board
+     */
+    public void move(String input, int gameBoardWidth, int gameBoardHeight) {
         int oldX = x;
         int oldY = y;
         if (input.equals("left")) {
@@ -54,15 +86,28 @@ public class Shape {
             y += 1;
         }
 
-        if (x < 0 || x + shape[0].length > gameBoardWidth || y + shape.length > gameBoardHeight) {
+        if (x < 0 || y + shape.length > gameBoardHeight) {
             x = oldX;
             y = oldY;
+        }
+        int count = 0;
+        for(int col = shape[0].length-1; col > 0; --col){
+            --count;
+            for(int row = 0; row < shape.length; ++row){
+                if(shape[row][col] != 0){
+                    if(x + count + shape[0].length > gameBoardWidth){
+                        x = oldX;
+                    }
+                }
+            }
         }
 
 
     }
 
-
+    /**
+     * This method rotates the shape and makes sure that the bottom "line" is never filled with zeros
+     */
     public void rotate() {
         int[][] rotatedShape = new int[shape.length][shape[0].length];
         for (int i = 0; i < shape.length; ++i) {
@@ -81,11 +126,11 @@ public class Shape {
         shape = rotatedShape;
     }
 
-    int[][] selectRandomShape(){
+    private int[][] selectRandomShape(){
         Random rand = new Random();
         int[][] tempShape = {};
         int shapeNR = rand.nextInt(1,7);
-        switch (shapeNR){
+        switch (5){
             case 1 -> tempShape = new int[][]{
                     {0,0,0},
                     {0,1,0},
