@@ -7,6 +7,6 @@ public interface InterfaceController {
     void move(String dir);
     void rotate();
     void startGame();
-    GameStatus getGameState();
+    GameStatus getGameStateENUM();
     //public void fullRow();
 }

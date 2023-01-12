@@ -26,8 +26,8 @@ public class Controller implements InterfaceController{
     public void startGame(){
         model.startGame();
     }
-    public GameStatus getGameState(){
-        return getGameState();
+    public GameStatus getGameStateENUM(){
+        return model.getGameState();
     }
 
 }
