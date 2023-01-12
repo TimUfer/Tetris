@@ -16,6 +16,7 @@ public class Model implements InterfaceModel {
         System.out.println(m.currentShape.getY());
 
     }
+    GameStatus gameState;
     private Board grid = new Board();
     private GameLoop loop;
     private Shape currentShape;
@@ -27,6 +28,7 @@ public class Model implements InterfaceModel {
     public boolean gameOver(){
         if(Arrays.stream(grid.getBoard()[4]).sum() != 0){
             System.out.println("Gameover");
+            gameState = GameStatus.GAMEOVER;
             return false;
         }else {
             return true;
@@ -37,8 +39,12 @@ public class Model implements InterfaceModel {
      * This method starts the game in the backend
      */
     public void startGame(){
+        gameState = GameStatus.RUNNING;
         loop = new GameLoop(this);
         loop.start();
+    }
+    public GameStatus getGameState(){
+        return gameState;
     }
 
     /**
@@ -171,3 +177,4 @@ public class Model implements InterfaceModel {
         }
     }
 }
+

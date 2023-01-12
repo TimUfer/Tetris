@@ -20,7 +20,7 @@ public class Board {
         b.testDraw();
         //System.out.println(b.rowCleared());
     }
-    private int[][] board = new int[24][10];
+    private int[][] board = new int[25][10];
     Board(){
         //board[21] = new int[]{2,2,2,2,2,2,2,2,2,2};
 

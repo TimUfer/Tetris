@@ -4,6 +4,7 @@ import Model.Model;
 import Model.InterfaceModel;
 import View.View;
 import View.InterfaceView;
+import Model.GameStatus;
 
 public class Controller implements InterfaceController{
     InterfaceModel model;
@@ -24,6 +25,9 @@ public class Controller implements InterfaceController{
     }
     public void startGame(){
         model.startGame();
+    }
+    public GameStatus getGameState(){
+        return getGameState();
     }
 
 }

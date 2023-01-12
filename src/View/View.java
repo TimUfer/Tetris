@@ -1,6 +1,7 @@
 package View;
 import Controller.InterfaceController;
 import Controller.Controller;
+import Model.GameStatus;
 import processing.core.PApplet;
 import processing.core.PGraphics;
 
@@ -16,9 +17,10 @@ public class View extends PApplet implements InterfaceView{
     InterfaceController controller = new Controller(this);
 
     public void draw(){
-        controller.update();
-        drawBoard();
-        testDraw();
+        if (controller.getGameState() == GameStatus.RUNNING){
+            controller.update();
+            drawBoard();
+        }
     }
 
     public void setup(){
@@ -30,22 +32,12 @@ public class View extends PApplet implements InterfaceView{
         size(800, 800);
 
     }
-    public void testDraw(){
-        for(int[] ia: gameBoard){
-            for(int i : ia){
-                System.out.print(i);
-            }
-            System.out.println("");
-        }
-        System.out.println("");
-
-    }
     public void setGameBoard(int[][] board){
         this.gameBoard = board;
     }
     private void drawBoard(){
         int size = 35;
-        for(int i = 4; i < gameBoard.length; ++i) {
+        for(int i = 4; i < gameBoard.length-1; ++i) {
             for (int j = 0; j < gameBoard[i].length; ++j) {
                 if (gameBoard[i][j] == 0) {
                     fill(color(200));

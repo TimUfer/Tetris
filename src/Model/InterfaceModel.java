@@ -5,4 +5,5 @@ public interface InterfaceModel {
     void moveShape(String dir);
     void rotate();
     Board getGrid();
+    GameStatus getGameState();
 }

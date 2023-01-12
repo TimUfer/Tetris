@@ -23,6 +23,7 @@ public class GameLoop extends Thread {
                     m.addShape(m.getCurrentShape());
                 } else if (m.checkCollision2() || m.checkCollision() || m.checkCollision3()/*gegebenheiten (Kein Block in currentShapre oder boden erreicht*/) {
                     m.getGrid().fullRow();
+                    running = m.gameOver();
                     m.newTetrisPiece();
                     m.addShape(m.getCurrentShape());
                 }
