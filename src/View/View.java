@@ -30,7 +30,6 @@ public class View extends PApplet implements InterfaceView{
 
     public void settings(){
         size(800, 800);
-
     }
     public void setGameBoard(int[][] board){
         this.gameBoard = board;

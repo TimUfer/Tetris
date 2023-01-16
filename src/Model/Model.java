@@ -85,23 +85,28 @@ public class Model implements InterfaceModel {
     boolean checkCollision2() {
         int row = currentShape.getShape().length - 1;
         boolean bool = true;
-        while(bool){
-            if(Arrays.stream(currentShape.getShape()[row]).sum() == 0){
-                row -= 1;
-            } else{
-                bool = false;
-                for(int j = 0; j < currentShape.getShape()[row].length; ++j){
-                    if(currentShape.getShape()[row][j] == 0){
-                        continue;
-                    }
-                    if(currentShape.getShape()[row][j] != 0){
-                        if(grid.getBoard()[currentShape.getY() + row + 1][currentShape.getX() + j] != 0){
-                            return true;
+        try {
+            while (bool) {
+                if (Arrays.stream(currentShape.getShape()[row]).sum() == 0) {
+                    row -= 1;
+                } else {
+                    bool = false;
+                    for (int j = 0; j < currentShape.getShape()[row].length; ++j) {
+                        if (currentShape.getShape()[row][j] == 0) {
+                            continue;
+                        }
+                        if (currentShape.getShape()[row][j] != 0) {
+                            if (grid.getBoard()[currentShape.getY() + row + 1][currentShape.getX() + j] != 0) {
+                                return true;
+                            }
                         }
                     }
                 }
             }
-        } return false;
+        }catch (ArrayIndexOutOfBoundsException e){
+            System.out.print("Right boarder reached");
+        }
+        return false;
     }
 
     /**
@@ -110,18 +115,16 @@ public class Model implements InterfaceModel {
      */
     void addShape(Shape tetrisShape){
         for (int i = 0; i < tetrisShape.getShape().length; ++i) {
+            //System.out.println("");
             for (int j = 0; j < tetrisShape.getShape()[i].length; ++j) {
                 int boardX = tetrisShape.getX() + j;
                 int boardY = (tetrisShape.getY() + i) ;
 
                 if (boardX >= 0 && boardX < grid.getBoard()[i].length && boardY >= 0 && boardY < grid.getBoard().length) {
-                    for (int n = 0; n < tetrisShape.getShape().length; ++n) {
-                        for (int k = 0; k < tetrisShape.getShape()[n].length; ++k) {
-                            if(tetrisShape.getShape()[n][k] == 0) continue;
-                            if (tetrisShape.getShape()[n][k] != 0 && grid.getBoard()[n + tetrisShape.getY()][k + tetrisShape.getX()] == 0) {
-                                grid.getBoard()[n + tetrisShape.getY()][k + tetrisShape.getX()] = tetrisShape.getShape()[n][k];
-                            }
-                        }
+                    if(tetrisShape.getShape()[i][j] == 0){ continue;}
+                    if (tetrisShape.getShape()[i][j] != 0 && grid.getBoard()[i + tetrisShape.getY()][j + tetrisShape.getX()] == 0) {
+                        //System.out.print(tetrisShape.getShape()[i][j]);
+                        grid.getBoard()[i + tetrisShape.getY()][j + tetrisShape.getX()] = tetrisShape.getShape()[i][j];
                     }
                 }
             }
@@ -133,8 +136,8 @@ public class Model implements InterfaceModel {
      * adds it with the new rotated-shape
      */
     public void rotate(){
-        currentShape.rotate();
         eraseCurrent();
+        currentShape.rotate();
         addShape(currentShape);
     }
 
@@ -162,16 +165,10 @@ public class Model implements InterfaceModel {
     }
 
     private void eraseCurrent(){
-        lastShape.setShape(currentShape.getShape());
-        lastShape.setX(currentShape.getX());
-        lastShape.setY(currentShape.getY());
-
-        for (int i = 0; i < lastShape.getShape().length; ++i) {
-            for (int j = 0; j < lastShape.getShape()[i].length; ++j) {
-                int boardX = lastShape.getX() + j;
-                int boardY = (lastShape.getY() + i) ;
-                if (boardX >= 0 && boardX < grid.getBoard()[i].length && boardY >= 0 && boardY < grid.getBoard().length) {
-                    grid.getBoard()[boardY][boardX] = 0;
+        for (int i = 0; i < currentShape.getShape().length; i++) {
+            for (int j = 0; j < currentShape.getShape()[i].length; j++) {
+                if (currentShape.getShape()[i][j] != 0) {
+                    grid.getBoard()[i + currentShape.getY()][j + currentShape.getX()] = 0;
                 }
             }
         }

@@ -91,17 +91,21 @@ public class Shape {
             y = oldY;
         }
         int count = 0;
-        for(int col = shape[0].length-1; col > 0; --col){
-            --count;
-            for(int row = 0; row < shape.length; ++row){
-                if(shape[row][col] != 0){
-                    if(x + count + shape[0].length > gameBoardWidth){
-                        x = oldX;
+        try {
+            for (int col = shape[0].length - 1; col > 0; --col) {
+                --count;
+                for (int row = 0; row < shape.length; ++row) {
+                    if (shape[row][col] != 0) {
+                        if (x + count + shape[0].length >= gameBoardWidth) {
+                            x = oldX;
+                        }
                     }
                 }
             }
+        }catch(ArrayIndexOutOfBoundsException e){
+            x = oldX;
+            System.out.println("Right boarder reached");
         }
-
 
     }
 
