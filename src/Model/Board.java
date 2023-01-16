@@ -4,27 +4,8 @@ import java.util.Arrays;
 
 public class Board {
 
-    public static void main(String[] args){
-        Board b = new Board();
-        b.board[12] = new int[]{2,0,2,2,6,2,4,2,2,2};
-
-        b.board[14] = new int[]{2,0,2,2,6,2,4,2,2,2};
-
-        b.board[15] = new int[]{2,2,2,2,2,2,2,2,2,2};
-        b.board[16] = new int[]{2,2,2,2,2,2,2,2,2,2};
-        b.board[18] = new int[]{0,0,2,2,6,2,4,2,2,2};
-        b.drop(b.rowCleared());
-        b.iterateZero();
-
-
-        b.testDraw();
-        //System.out.println(b.rowCleared());
-    }
     private int[][] board = new int[25][10];
-    Board(){
-        //board[21] = new int[]{2,2,2,2,2,2,2,2,2,2};
 
-    }
 
     /**
      * Getter-method for the game-board
@@ -34,7 +15,7 @@ public class Board {
         return board;
     }
 
-    void testDraw(){
+    /*void testDraw(){
         for(int[] ia: board){
             for(int i : ia){
                 System.out.print(i);
@@ -43,7 +24,7 @@ public class Board {
         }
         System.out.println("");
 
-    }
+    }*/
 
     /**
      * Clears a row when it is filled with digits other than zero
@@ -51,30 +32,7 @@ public class Board {
     void fullRow(){
         drop(rowCleared());
     }
-    private void iterateZero(){
-        for(int i = (board.length - 1) - 4; i > 0; --i){
-            if(Arrays.stream(board[i]).sum() == 0){
-                dropZeroRow(i);
-            }
-        }
-    }
-    private void dropZeroRow(int rowIndex) {
-        boolean isFilledWithZeros = true;
-        for (int j = 0; j < board[rowIndex].length; ++j) {
-            if (board[rowIndex][j] != 0) {
-                isFilledWithZeros = false;
-                break;
-            }
-        }
-        if (isFilledWithZeros) {
-            for (int i = rowIndex; i > 0; --i) {
-                for (int j = 0; j < board[rowIndex].length; ++j) {
-                    board[i][j] = board[i - 1][j];
-                }
-            }
-            Arrays.fill(board[0], 0);
-        }
-    }
+
     private int rowCleared(){
         boolean bool;
 

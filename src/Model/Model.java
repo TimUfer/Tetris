@@ -3,24 +3,11 @@ package Model;
 import java.util.Arrays;
 
 public class Model implements InterfaceModel {
-    public static void main(String[] args){
-        Model m = new Model();
-        //m.startGame();
-        m.newTetrisPiece();
-        m.addShape(m.currentShape);
-        m.grid.testDraw();
-        m.rotate();
-        m.rotate();
-        m.grid.testDraw();
 
-        System.out.println(m.currentShape.getY());
-
-    }
-    GameStatus gameState;
+    GameStatus gameState = GameStatus.MENU;
     private Board grid = new Board();
     private GameLoop loop;
     private Shape currentShape;
-    private Shape lastShape = new Shape();
     public void newTetrisPiece(){
         currentShape = new Shape(3,0);
 
