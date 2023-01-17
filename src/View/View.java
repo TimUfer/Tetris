@@ -18,7 +18,7 @@ public class View extends PApplet implements InterfaceView{
     InterfaceController controller = new Controller(this);
 
     public void draw(){
-        System.out.println(controller.getGameStateENUM());
+        //System.out.println(controller.getGameStateENUM());
         if(gamerunning == false){
             startScreen();
         }

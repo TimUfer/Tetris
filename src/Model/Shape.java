@@ -8,7 +8,8 @@ import java.util.Random;
  */
 public class Shape {
     private int[][] shape;
-    private int x,y;
+    private int x,y,shapeType;
+    private boolean i_Vertical = true;
 
     /**
      * The constructor creates a new random shape by calling the selectRandomShape method
@@ -114,18 +115,28 @@ public class Shape {
      */
     void rotate() {
         int[][] rotatedShape = new int[shape.length][shape[0].length];
-        for (int i = 0; i < shape.length; ++i) {
-            for (int j = 0; j < shape[i].length; ++j) {
-                rotatedShape[j][shape.length - i - 1] = shape[i][j];
-            }
-        }
-       if(Arrays.stream(rotatedShape[rotatedShape.length-1]).sum() == 0 && rotatedShape[0][1] != 4){
-            for(int i = rotatedShape.length-1; i > 0 ; --i){
-                for(int j = 0; j < rotatedShape[i].length; ++j){
-                    rotatedShape[i][j] = rotatedShape[i-1][j];
+        if(shapeType != 5) {
+            for (int i = 0; i < shape.length; ++i) {
+                for (int j = 0; j < shape[i].length; ++j) {
+                    rotatedShape[j][shape.length - i - 1] = shape[i][j];
                 }
             }
-            Arrays.fill(rotatedShape[0],0);
+            if (Arrays.stream(rotatedShape[rotatedShape.length - 1]).sum() == 0 && rotatedShape[0][1] != 4) {
+                for (int i = rotatedShape.length - 1; i > 0; --i) {
+                    for (int j = 0; j < rotatedShape[i].length; ++j) {
+                        rotatedShape[i][j] = rotatedShape[i - 1][j];
+                    }
+                }
+                Arrays.fill(rotatedShape[0], 0);
+            }
+        } else{
+            if(i_Vertical){
+                rotatedShape = new int[][]{{0,0,0,0}, {0,0,0,0}, {0,0,0,0}, {5,5,5,5}};
+                i_Vertical = !i_Vertical;
+            } else{
+                rotatedShape = new int[][]{{5,0,0,0}, {5,0,0,0}, {5,0,0,0}, {5,0,0,0}};
+                i_Vertical = !i_Vertical;
+            }
         }
         shape = rotatedShape;
     }
@@ -134,42 +145,29 @@ public class Shape {
         Random rand = new Random();
         int[][] tempShape = {};
         int shapeNR = rand.nextInt(1,7);
+        shapeType = shapeNR;
         switch (shapeNR){
             case 1 -> tempShape = new int[][]{
-                    {0,0,0},
-                    {0,1,0},
-                    {1,1,1}
+                    {0,0,0}, {0,1,0}, {1,1,1}
             };
             case 2 -> tempShape = new int[][]{
-                    {0,0,0},
-                    {0,0,2},
-                    {2,2,2}
+                    {0,0,0}, {0,0,2}, {2,2,2}
             };
             case 3 -> tempShape = new int[][]{
-                    {0,0,0},
-                    {3,3,0},
-                    {0,3,3}
+                    {0,0,0}, {3,3,0}, {0,3,3}
             };
             case 4 -> tempShape = new int[][]{
-                    {4,4},
-                    {4,4}
+                    {4,4}, {4,4}
             };
             case 5 -> tempShape = new int[][]{
-                    {5,0,0,0},
-                    {5,0,0,0},
-                    {5,0,0,0},
-                    {5,0,0,0}
+                    {5,0,0,0}, {5,0,0,0}, {5,0,0,0}, {5,0,0,0}
             };
             case 6 -> tempShape = new int[][]{
-                    {0,0,0},
-                    {6,0,0},
-                    {6,6,6}
+                    {0,0,0}, {6,0,0}, {6,6,6}
 
             };
             case 7 -> tempShape = new int[][]{
-                    {0,0,0},
-                    {0,7,7},
-                    {7,7,0}
+                    {0,0,0}, {0,7,7}, {7,7,0}
             };
             default -> System.out.println("Unusable value (Random int)" + shapeNR);
         }

@@ -28,7 +28,6 @@ public class GameLoop extends Thread {
                     m.addShape(m.getCurrentShape());
                 }
                     m.moveShape("down");
-
                     //m.getGrid().testDraw();
                 sleep(400);
             } catch (InterruptedException e){

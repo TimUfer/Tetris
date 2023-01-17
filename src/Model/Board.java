@@ -3,10 +3,7 @@ package Model;
 import java.util.Arrays;
 
 public class Board {
-
     private int[][] board = new int[25][10];
-
-
     /**
      * Getter-method for the game-board
      * @return Returns the game-board
@@ -30,7 +27,12 @@ public class Board {
      * Clears a row when it is filled with digits other than zero
      */
     void fullRow(){
-        drop(rowCleared());
+        for(int i = 0; i <= checkFullRows(board); ++i){
+            drop(rowCleared());
+        }
+    }
+    int checkFullRows(int[][] board) {
+        return (int) Arrays.stream(board).filter(r -> Arrays.stream(r).noneMatch(i -> i == 0)).count();
     }
 
     private int rowCleared(){

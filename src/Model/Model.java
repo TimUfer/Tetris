@@ -8,7 +8,7 @@ public class Model implements InterfaceModel {
     private Board grid = new Board();
     private GameLoop loop;
     private Shape currentShape;
-    public void newTetrisPiece(){
+    void newTetrisPiece(){
         currentShape = new Shape(3,0);
 
     }
@@ -51,16 +51,22 @@ public class Model implements InterfaceModel {
     }
 
     boolean checkCollision3(){
-        for (int i = 0; i < currentShape.getShape().length-1; ++i) {
-            for (int j = 0; j < currentShape.getShape()[i].length; ++j) {
-                if (currentShape.getShape()[i][j] != 0) {
-                    if (currentShape.getShape()[i + 1][j] == 0) {
-                        if (grid.getBoard()[currentShape.getY() + i + 1][currentShape.getX() + j] != 0) {
-                            return true;
+        try {
+            for (int i = 0; i < currentShape.getShape().length - 1; ++i) {
+                for (int j = 0; j < currentShape.getShape()[i].length; ++j) {
+                    if (currentShape.getShape()[i][j] != 0) {
+                        if (currentShape.getShape()[i + 1][j] == 0) {
+                            if (grid.getBoard()[currentShape.getY() + i + 1][currentShape.getX() + j] != 0) {
+                                return true;
+                            }
                         }
                     }
                 }
             }
+        }catch (IndexOutOfBoundsException e){
+            eraseCurrent();
+            currentShape.setX(currentShape.getX()-3);
+
         }
         return false;
     }
@@ -92,6 +98,8 @@ public class Model implements InterfaceModel {
             }
         }catch (ArrayIndexOutOfBoundsException e){
             System.out.print("Right boarder reached");
+            eraseCurrent();
+            currentShape.setX(currentShape.getX()-3);
         }
         return false;
     }
@@ -150,12 +158,19 @@ public class Model implements InterfaceModel {
         currentShape.move(dir,grid.getBoard()[0].length,grid.getBoard().length);
         addShape(currentShape);
     }
+    void add(){
+        addShape(currentShape);
+    }
 
     private void eraseCurrent(){
         for (int i = 0; i < currentShape.getShape().length; i++) {
             for (int j = 0; j < currentShape.getShape()[i].length; j++) {
-                if (currentShape.getShape()[i][j] != 0) {
-                    grid.getBoard()[i + currentShape.getY()][j + currentShape.getX()] = 0;
+                try {
+                    if (currentShape.getShape()[i][j] != 0) {
+                        grid.getBoard()[i + currentShape.getY()][j + currentShape.getX()] = 0;
+                    }
+                }catch (ArrayIndexOutOfBoundsException e){
+
                 }
             }
         }
