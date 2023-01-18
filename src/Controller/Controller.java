@@ -7,13 +7,13 @@ import View.InterfaceView;
 import Model.GameStatus;
 
 public class Controller implements InterfaceController{
-    InterfaceModel model;
+    Model model;
     InterfaceView view;
 
-    public Controller(InterfaceView view){
-        this.view = view;
-        model = new Model();
+    public Controller(Model model){
+        this.model = model;
     }
+    public void setView(InterfaceView view){this.view = view;}
     public void update(){
         view.setGameBoard(model.getGrid().getBoard());
     }

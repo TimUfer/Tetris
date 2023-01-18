@@ -54,12 +54,8 @@ public class Model implements InterfaceModel {
         try {
             for (int i = 0; i < currentShape.getShape().length - 1; ++i) {
                 for (int j = 0; j < currentShape.getShape()[i].length; ++j) {
-                    if (currentShape.getShape()[i][j] != 0) {
-                        if (currentShape.getShape()[i + 1][j] == 0) {
-                            if (grid.getBoard()[currentShape.getY() + i + 1][currentShape.getX() + j] != 0) {
-                                return true;
-                            }
-                        }
+                    if (currentShape.getShape()[i][j] != 0 && currentShape.getShape()[i + 1][j] == 0 && grid.getBoard()[currentShape.getY() + i + 1][currentShape.getX() + j] != 0) {
+                        return true;
                     }
                 }
             }
@@ -88,10 +84,8 @@ public class Model implements InterfaceModel {
                         if (currentShape.getShape()[row][j] == 0) {
                             continue;
                         }
-                        if (currentShape.getShape()[row][j] != 0) {
-                            if (grid.getBoard()[currentShape.getY() + row + 1][currentShape.getX() + j] != 0) {
-                                return true;
-                            }
+                        if (currentShape.getShape()[row][j] != 0 && grid.getBoard()[currentShape.getY() + row + 1][currentShape.getX() + j] != 0) {
+                            return true;
                         }
                     }
                 }
@@ -116,7 +110,7 @@ public class Model implements InterfaceModel {
                 int boardY = (tetrisShape.getY() + i) ;
 
                 if (boardX >= 0 && boardX < grid.getBoard()[i].length && boardY >= 0 && boardY < grid.getBoard().length) {
-                    if(tetrisShape.getShape()[i][j] == 0){ continue;}
+                    //if(tetrisShape.getShape()[i][j] == 0){ continue;}
                     if (tetrisShape.getShape()[i][j] != 0 && grid.getBoard()[i + tetrisShape.getY()][j + tetrisShape.getX()] == 0) {
                         //System.out.print(tetrisShape.getShape()[i][j]);
                         grid.getBoard()[i + tetrisShape.getY()][j + tetrisShape.getX()] = tetrisShape.getShape()[i][j];
@@ -142,11 +136,11 @@ public class Model implements InterfaceModel {
      * @return Returns if the block has reached the bottom of the game-board
      */
     boolean checkCollision(){
-        boolean collisided = false;
+        boolean collided = false;
         if(currentShape.getY() + currentShape.getShape().length >= grid.getBoard().length -1){
-            collisided = true;
+            collided = true;
         }
-        return collisided;
+        return collided;
     }
 
     /**
@@ -156,9 +150,6 @@ public class Model implements InterfaceModel {
     public void moveShape(String dir){
         eraseCurrent();
         currentShape.move(dir,grid.getBoard()[0].length,grid.getBoard().length);
-        addShape(currentShape);
-    }
-    void add(){
         addShape(currentShape);
     }
 

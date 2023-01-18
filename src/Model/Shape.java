@@ -21,8 +21,6 @@ public class Shape {
         this.x = x;
         this.y = y;
     }
-    public Shape(){
-    }
 
     /**
      * Getter-method for the X coordinate
@@ -46,13 +44,6 @@ public class Shape {
     int getY() {
         return y;
     }
-    /**
-     * Setter-method for the Y coordinate
-     * @param y New X coordinate
-     */
-    void setY(int y) {
-        this.y = y;
-    }
 
     /**
      * Getter-method for the shape
@@ -60,14 +51,6 @@ public class Shape {
      */
     int[][] getShape() {
         return shape;
-    }
-
-    /**
-     * Setter-method for the shape
-     * @param shape The value, shape is set to
-     */
-    void setShape(int[][] shape) {
-        this.shape = shape;
     }
 
     /**

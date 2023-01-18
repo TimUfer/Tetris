@@ -6,16 +6,13 @@ import processing.core.PApplet;
 import processing.core.PGraphics;
 
 public class View extends PApplet implements InterfaceView{
-    public static void main(String[] args){
-        String[] appArgs = {"Draw"};
-        View view = new View();
-        view.runSketch(appArgs, view);
-    }
     private int[][] gameBoard;
     boolean gamerunning = false;
     int boarderX = 50;
     int boarderY = 50;
-    InterfaceController controller = new Controller(this);
+    InterfaceController controller;
+
+    public void setController(InterfaceController controller){this.controller = controller;}
 
     public void draw(){
         //System.out.println(controller.getGameStateENUM());

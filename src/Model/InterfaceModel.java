@@ -6,4 +6,5 @@ public interface InterfaceModel {
     void rotate();
     Board getGrid();
     GameStatus getGameState();
+
 }
