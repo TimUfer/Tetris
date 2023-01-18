@@ -4,7 +4,8 @@ import java.util.Arrays;
 import java.util.Random;
 
 /**
- * The shape class represents a Tetris block
+ * The shape class represents a Tetris block.
+ * It has internal methods to rotate its shape and move it by changing the X and Y variables.
  */
 public class Shape {
     private int[][] shape;
@@ -129,7 +130,7 @@ public class Shape {
         int[][] tempShape = {};
         int shapeNR = rand.nextInt(1,7);
         shapeType = shapeNR;
-        switch (shapeNR){
+        switch (4){
             case 1 -> tempShape = new int[][]{
                     {0,0,0}, {0,1,0}, {1,1,1}
             };

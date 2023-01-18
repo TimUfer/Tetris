@@ -2,8 +2,18 @@ package Model;
 
 import java.util.Arrays;
 
-public class Board {
+interface IBoard{
+    int countFullRow(int[][] board);
+}
+
+/**
+ * The Board class resembles the game-board.
+ * It has internal methods to check if a row is full of tetris blocks
+ * and removes them.
+ */
+public class Board{
     private int[][] board = new int[25][10];
+    IBoard countFullRows = board -> (int) Arrays.stream(board).filter(r -> Arrays.stream((int[]) r).noneMatch(i -> i == 0)).count();
     /**
      * Getter-method for the game-board
      * @return Returns the game-board
@@ -26,14 +36,13 @@ public class Board {
     /**
      * Clears a row when it is filled with digits other than zero
      */
-    void fullRow(){
-        for(int i = 0; i <= checkFullRows(board); ++i){
+    public void fullRow(){
+        for(int i = 0; i <= countFullRows.countFullRow(board); ++i){
             drop(rowCleared());
         }
     }
-    int checkFullRows(int[][] board) {
-        return (int) Arrays.stream(board).filter(r -> Arrays.stream(r).noneMatch(i -> i == 0)).count();
-    }
+
+
 
     private int rowCleared(){
         int row = -1;

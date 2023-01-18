@@ -2,17 +2,25 @@ package Model;
 
 import java.util.Arrays;
 
+/**
+ * The Model class manipulates the game. With its Methods like moveShape or rotate,
+ * it can influence the position and the orientation of the current Block on the game-board.
+ * It also starts the game with the startGame Method.
+ * Another purpose of this class is the collision-detection.
+ * With the three collision-detection Methods its checking if the current Block has reached the Botton,
+ * reached the side-borders or has collided with another Block.
+ */
 public class Model implements InterfaceModel {
 
     GameStatus gameState = GameStatus.MENU;
     private Board grid = new Board();
     private GameLoop loop;
     private Shape currentShape;
+
     void newTetrisPiece(){
         currentShape = new Shape(3,0);
-
     }
-    public boolean gameOver(){
+    boolean gameOver(){
         if(Arrays.stream(grid.getBoard()[4]).sum() != 0){
             System.out.println("Gameover");
             gameState = GameStatus.GAMEOVER;
@@ -30,6 +38,11 @@ public class Model implements InterfaceModel {
         loop = new GameLoop(this);
         loop.start();
     }
+
+    /**
+     * This method returns the current game-state (In the MENU, game RUNNING or GAMEOVER)
+     * @return returns the enum value of the game-state
+     */
     public GameStatus getGameState(){
         return gameState;
     }

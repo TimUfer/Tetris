@@ -1,7 +1,9 @@
 package Model;
 
 /**
- * The GameLoop class represents the running game. Using Threads the game speed can be adjusted
+ * The GameLoop class represents the running game. Using Threads the game speed can be adjusted.
+ * While the game is running, it checks for full rows, collided Blocks (adds a new Block to the game if so) and
+ * makes the current Block fall.
  */
 public class GameLoop extends Thread {
     private Model m;
@@ -29,7 +31,7 @@ public class GameLoop extends Thread {
                 }
                     m.moveShape("down");
                     //m.getGrid().testDraw();
-                sleep(400);
+                sleep(100);
             } catch (InterruptedException e){
                 e.printStackTrace();
             }
