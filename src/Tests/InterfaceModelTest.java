@@ -4,6 +4,8 @@ import Model.*;
 import Model.GameStatus;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ModelTest {
@@ -23,6 +25,13 @@ class ModelTest {
     void testGetBoard(){
         Model m = new Model();
         assertTrue(m.getGrid().getBoard().getClass() == int[][].class);
+    }
+
+    @Test
+    void testGetGrid(){
+        Model m = new Model();
+        Board b = new Board();
+        assertTrue(m.getGrid().getClass() == b.getClass());
     }
 
     @Test
@@ -50,7 +59,17 @@ class ModelTest {
     }
 
     @Test
-    void testShape(){
-        Shape s = new Shape(3,0);
+    void testEmptyBoard(){
+        Board b = new Board();
+        int[][] e = new int[25][10];
+        for(int[] i: e){
+            Arrays.fill(i,0);
+        }
+
+        for(int i = 0; i < b.getBoard().length; ++i) {
+            for(int j = 0; j < b.getBoard()[0].length; ++j){
+                assertTrue(b.getBoard()[i][j] == e[i][j]);
+            }
+        }
     }
 }

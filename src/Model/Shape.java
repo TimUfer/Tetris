@@ -128,7 +128,7 @@ public class Shape {
     private int[][] selectRandomShape(){
         Random rand = new Random();
         int[][] tempShape = {};
-        int shapeNR = rand.nextInt(1,7);
+        int shapeNR = rand.nextInt(1,8);
         shapeType = shapeNR;
         switch (shapeNR){
             case 1 -> tempShape = new int[][]{
