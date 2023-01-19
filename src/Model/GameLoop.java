@@ -31,7 +31,7 @@ public class GameLoop extends Thread {
                 }
                     m.moveShape("down");
                     //m.getGrid().testDraw();
-                sleep(100);
+                sleep(400);
             } catch (InterruptedException e){
                 e.printStackTrace();
             }

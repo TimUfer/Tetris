@@ -20,7 +20,7 @@ public class View extends PApplet implements InterfaceView{
             startScreen();
         }
         else if(controller.getGameStateENUM() == GameStatus.RUNNING){
-            gameScreenSettings();
+            gameScreen();
             controller.update();
             drawBoard();
         }else if(controller.getGameStateENUM() == GameStatus.GAMEOVER){
@@ -28,8 +28,15 @@ public class View extends PApplet implements InterfaceView{
         }
     }
 
-    public void gameScreenSettings(){
+    public void gameScreen(){
         background(color(26, 26, 26));
+        fill(color(200));
+        textSize(50);
+        text("Controlls", 500,200);
+        textSize(30);
+        text("Rotate: UP arrow", 500,250);
+        text("Left: Left arrow", 500,300);
+        text("Right: Right arrow", 500,350);
     }
 
     public void settings(){
@@ -72,7 +79,7 @@ public class View extends PApplet implements InterfaceView{
         }
     }
     void startScreen(){
-        background(color(20));
+        background(color(30));
         textSize(100);
         text("TETRIS",250,200);
         fill(color(240));
@@ -82,7 +89,7 @@ public class View extends PApplet implements InterfaceView{
     }
 
     void gameOverScreen(){
-        background(color(20));
+        background(color(30));
         textSize(100);
         text("GAMEOVER",150,200);
         fill(color(230, 230, 0));

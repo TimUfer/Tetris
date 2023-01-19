@@ -2,7 +2,7 @@ package Model;
 
 import java.util.Arrays;
 
-interface IBoard{
+interface Function{
     int countFullRow(int[][] board);
 }
 
@@ -13,7 +13,7 @@ interface IBoard{
  */
 public class Board{
     private int[][] board = new int[25][10];
-    IBoard countFullRows = board -> (int) Arrays.stream(board).filter(r -> Arrays.stream((int[]) r).noneMatch(i -> i == 0)).count();
+    Function countFullRows = board -> (int) Arrays.stream(board).filter(r -> Arrays.stream((int[]) r).noneMatch(i -> i == 0)).count();
     /**
      * Getter-method for the game-board
      * @return Returns the game-board

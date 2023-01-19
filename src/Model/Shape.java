@@ -130,7 +130,7 @@ public class Shape {
         int[][] tempShape = {};
         int shapeNR = rand.nextInt(1,7);
         shapeType = shapeNR;
-        switch (4){
+        switch (shapeNR){
             case 1 -> tempShape = new int[][]{
                     {0,0,0}, {0,1,0}, {1,1,1}
             };

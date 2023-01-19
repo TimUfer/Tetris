@@ -12,10 +12,10 @@ import java.util.Arrays;
  */
 public class Model implements InterfaceModel {
 
-    GameStatus gameState = GameStatus.MENU;
+    private GameStatus gameState = GameStatus.MENU;
     private Board grid = new Board();
     private GameLoop loop;
-    private Shape currentShape;
+    private Shape currentShape = new Shape(3,0);
 
     void newTetrisPiece(){
         currentShape = new Shape(3,0);
