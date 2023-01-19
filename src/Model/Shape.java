@@ -61,6 +61,7 @@ public class Shape {
      * @param gameBoardHeight The height determines the bottom boarder for the game-board
      */
     void move(String input, int gameBoardWidth, int gameBoardHeight) {
+        assert input.equals("left") || input.equals("right") || input.equals("down"):"move-method: Wrong input";
         int oldX = x;
         int oldY = y;
         if (input.equals("left")) {

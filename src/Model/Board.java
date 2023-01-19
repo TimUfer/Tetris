@@ -21,8 +21,8 @@ public class Board{
     public int[][] getBoard(){
         return board;
     }
-
-    /*void testDraw(){
+/*
+    void testDraw(){
         for(int[] ia: board){
             for(int i : ia){
                 System.out.print(i);
@@ -31,19 +31,23 @@ public class Board{
         }
         System.out.println("");
 
-    }*/
-
+    }
+*/
     /**
      * Clears a row when it is filled with digits other than zero
      */
     void fullRow(){
         int c = countFullRows.countFullRow(board);
         for(int i = 0; i <= c; ++i){
-            drop(rowCleared());
+            drop(rowToBeCleared());
         }
     }
 
-    private int rowCleared(){
+    /**
+     * This method detects which row is to be cleared
+     * @return returns the index of the row that has to be cleared
+     */
+    private int rowToBeCleared(){
         int row = -1;
         for(int i = 0; i < board.length; ++i) {
             int count = 0;
@@ -61,6 +65,10 @@ public class Board{
         return row;
     }
 
+    /**
+     * the drop-method drops the rows above the one that has to be cleared
+     * @param row The row that is full and has to be cleared
+     */
     private void drop(int row){
         if(row > -1){
             for(int j = row; j > 0; --j){

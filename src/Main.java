@@ -3,8 +3,7 @@ import Model.Model;
 import Controller.Controller;
 import View.View;
 
-
-public class Main {
+public abstract class Main {
     public static void main(String[] args) {
         var model = new Model();
         var controller = new Controller(model);

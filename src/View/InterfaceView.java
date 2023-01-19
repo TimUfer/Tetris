@@ -1,5 +1,8 @@
 package View;
 
 public interface InterfaceView {
-    void setGameBoard(int[][] board);
+    void startScreen();
+    void gameScreen();
+    void drawBoard();
+    void gameOverScreen();
 }
