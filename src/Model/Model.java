@@ -168,5 +168,9 @@ public class Model implements InterfaceModel {
             }
         }
     }
+    @Override
+    public String toString() {
+        return Arrays.deepToString(grid.getBoard()).replace("], ", "]\n").replace("[[", "[").replace("]]", "]");
+    }
 }
 

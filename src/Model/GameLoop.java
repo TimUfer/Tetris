@@ -28,9 +28,9 @@ public class GameLoop extends Thread {
                     m.newTetrisPiece();
                     m.addShape(m.getCurrentShape());
                 }
-                    m.moveShape("down");
+                m.moveShape("down");
                     //m.getGrid().testDraw();
-                sleep(100);
+                sleep(400);
             } catch (InterruptedException e){
                 e.printStackTrace();
             }

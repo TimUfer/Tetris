@@ -122,13 +122,8 @@ public class Shape {
                 Arrays.fill(rotatedShape[0], 0);
             }
         } else{
-            if(i_Vertical){
-                rotatedShape = new int[][]{{0,0,0,0}, {0,0,0,0}, {0,0,0,0}, {5,5,5,5}};
-                i_Vertical = !i_Vertical;
-            } else{
-                rotatedShape = new int[][]{{5,0,0,0}, {5,0,0,0}, {5,0,0,0}, {5,0,0,0}};
-                i_Vertical = !i_Vertical;
-            }
+            rotatedShape = i_Vertical ? new int[][]{{0,0,0,0}, {0,0,0,0}, {0,0,0,0}, {5,5,5,5}} : new int[][]{{5,0,0,0}, {5,0,0,0}, {5,0,0,0}, {5,0,0,0}};
+            i_Vertical = !i_Vertical;
         }
         shape = rotatedShape;
     }
