@@ -60,7 +60,7 @@ public class Shape {
      * @param gameBoardWidth The width also determines the right-hand boarder for the game-board
      * @param gameBoardHeight The height determines the bottom boarder for the game-board
      */
-    void move(String input, int gameBoardWidth, int gameBoardHeight) {
+    void move(String input, int gameBoardWidth, int gameBoardHeight , int[][] gameboard) {
         assert input.equals("left") || input.equals("right") || input.equals("down"):"move-method: Wrong input";
         int oldX = x;
         int oldY = y;
@@ -76,8 +76,16 @@ public class Shape {
             x = oldX;
             y = oldY;
         }
+
         int count = 0;
         try {
+            for(int i = 0; i < shape.length; ++i){
+                for(int j = 0; j < shape[0].length; ++j){
+                    if(shape[i][j] != 0 && gameboard[i + y][j + x] != 0){
+                        x = oldX;
+                    }
+                }
+            }
             for (int col = shape[0].length - 1; col > 0; --col) {
                 --count;
                 for (int row = 0; row < shape.length; ++row) {
@@ -90,7 +98,6 @@ public class Shape {
             }
         }catch(ArrayIndexOutOfBoundsException e){
             x = oldX;
-            System.out.println("Right boarder reached");
         }
 
     }

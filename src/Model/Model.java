@@ -20,13 +20,9 @@ public class Model implements InterfaceModel {
     void newTetrisPiece(){
         currentShape = new Shape(3,0);
     }
-    boolean gameOver(){
+    void gameOver(){
         if(Arrays.stream(grid.getBoard()[4]).sum() != 0){
-            System.out.println("Gameover");
             gameState = GameStatus.GAMEOVER;
-            return false;
-        }else {
-            return true;
         }
     }
 
@@ -75,7 +71,6 @@ public class Model implements InterfaceModel {
         }catch (IndexOutOfBoundsException e){
             eraseCurrent();
             currentShape.setX(currentShape.getX()-3);
-
         }
         return false;
     }
@@ -117,17 +112,11 @@ public class Model implements InterfaceModel {
      */
     void addShape(Shape tetrisShape){
         for (int i = 0; i < tetrisShape.getShape().length; ++i) {
-            //System.out.println("");
             for (int j = 0; j < tetrisShape.getShape()[i].length; ++j) {
                 int boardX = tetrisShape.getX() + j;
                 int boardY = (tetrisShape.getY() + i) ;
-
-                if (boardX >= 0 && boardX < grid.getBoard()[i].length && boardY >= 0 && boardY < grid.getBoard().length) {
-                    //if(tetrisShape.getShape()[i][j] == 0){ continue;}
-                    if (tetrisShape.getShape()[i][j] != 0 && grid.getBoard()[i + tetrisShape.getY()][j + tetrisShape.getX()] == 0) {
-                        //System.out.print(tetrisShape.getShape()[i][j]);
-                        grid.getBoard()[i + tetrisShape.getY()][j + tetrisShape.getX()] = tetrisShape.getShape()[i][j];
-                    }
+                if (boardX >= 0 && boardX < grid.getBoard()[i].length && boardY >= 0 && boardY < grid.getBoard().length && tetrisShape.getShape()[i][j] != 0 && grid.getBoard()[i + tetrisShape.getY()][j + tetrisShape.getX()] == 0) {
+                    grid.getBoard()[i + tetrisShape.getY()][j + tetrisShape.getX()] = tetrisShape.getShape()[i][j];
                 }
             }
         }
@@ -162,7 +151,7 @@ public class Model implements InterfaceModel {
      */
     public void moveShape(String dir){
         eraseCurrent();
-        currentShape.move(dir,grid.getBoard()[0].length,grid.getBoard().length);
+        currentShape.move(dir,grid.getBoard()[0].length,grid.getBoard().length , grid.getBoard());
         addShape(currentShape);
     }
 

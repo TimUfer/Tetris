@@ -35,7 +35,7 @@ class ModelTest {
     }
 
     @Test
-    void testGetGamestate(){
+    void testGetGameState(){
         Model m = new Model();
         assertSame(m.getGameState(), GameStatus.MENU);
     }
@@ -57,6 +57,13 @@ class ModelTest {
         Model m = new Model();
         assertDoesNotThrow(m::getGameState);
     }
+    @Test
+    void startGameState(){
+        Model m = new Model();
+        var first = m.getGameState();
+        m.startGame();
+        assertNotSame(first, m.getGameState());
+    }
 
     @Test
     void testEmptyBoard(){
@@ -68,7 +75,7 @@ class ModelTest {
 
         for(int i = 0; i < b.getBoard().length; ++i) {
             for(int j = 0; j < b.getBoard()[0].length; ++j){
-                assertTrue(b.getBoard()[i][j] == e[i][j]);
+                assertEquals(b.getBoard()[i][j], e[i][j]);
             }
         }
     }

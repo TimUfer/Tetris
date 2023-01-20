@@ -7,7 +7,6 @@ package Model;
  */
 public class GameLoop extends Thread {
     private Model m;
-    private boolean running = true;
     public GameLoop(Model m){
         this.m = m;
     }
@@ -18,20 +17,20 @@ public class GameLoop extends Thread {
      */
     public void run() {
 
-        while (running) {
+        while (m.getGameState() == GameStatus.RUNNING) {
             try {
                 if(m.getCurrentShape() == null){
                     m.newTetrisPiece();
                     m.addShape(m.getCurrentShape());
                 } else if (m.checkCollision2() || m.checkCollision() || m.checkCollision3()) {
                     m.getGrid().fullRow();
-                    running = m.gameOver();
+                    m.gameOver();
                     m.newTetrisPiece();
                     m.addShape(m.getCurrentShape());
                 }
                     m.moveShape("down");
                     //m.getGrid().testDraw();
-                sleep(400);
+                sleep(100);
             } catch (InterruptedException e){
                 e.printStackTrace();
             }
