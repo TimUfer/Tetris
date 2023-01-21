@@ -22,7 +22,7 @@ public class Board{
     /**
      * This function counts how many full rows there are.
      */
-    Function countFullRows = board -> (int) Arrays.stream(board).filter(r -> Arrays.stream(r).noneMatch(i -> i == 0)).count();
+    private Function countFullRows = board -> (int) Arrays.stream(board).filter(r -> Arrays.stream(r).noneMatch(i -> i == 0)).count();
     /**
      * Getter-method for the game-board
      * @return Returns the game-board

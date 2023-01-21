@@ -14,11 +14,11 @@ public class View extends PApplet implements InterfaceView{
     /**
      * Stores the distance between the left window border and the drawn game-board
      */
-    int boarderX = 50;
+    private int boarderX = 50;
     /**
      * Stores the distance between the upper window border and the drawn game-board
      */
-    int boarderY = 50;
+    private int boarderY = 50;
     /**
      * Variable to store a controller interface.
      */
@@ -45,11 +45,11 @@ public class View extends PApplet implements InterfaceView{
         background(color(26, 26, 26));
         fill(color(200));
         textSize(50);
-        text("Controls", 500,200);
+        text("Controls", 450,200);
         textSize(30);
-        text("Rotate: UP arrow", 500,250);
-        text("Left: Left arrow", 500,300);
-        text("Right: Right arrow", 500,350);
+        text("Rotate: UP arrow", 450,250);
+        text("Move Left: Left arrow", 450,300);
+        text("Move Right: Right arrow", 450,350);
     }
 
     /**
