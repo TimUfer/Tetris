@@ -12,9 +12,21 @@ import java.util.Arrays;
  */
 public class Model implements InterfaceModel {
 
+    /**
+     * This variable stores the current game-state. It's on MENU on default.
+     */
     private GameStatus gameState = GameStatus.MENU;
+    /**
+     * Variable for the game-board
+     */
     private Board grid = new Board();
+    /**
+     * Variable for the Gameloop.
+     */
     private GameLoop loop;
+    /**
+     * This variable stores the currentShape which can be manipulated.
+     */
     private Shape currentShape = new Shape(3,0);
 
     /**

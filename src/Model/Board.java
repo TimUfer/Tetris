@@ -2,6 +2,9 @@ package Model;
 
 import java.util.Arrays;
 
+/**
+ * Functional interface for lambda.
+ */
 interface Function{
     int countFullRow(int[][] board);
 }
@@ -12,7 +15,13 @@ interface Function{
  * and removes them.
  */
 public class Board{
+    /**
+     * This array is the game-board. Every new tetris-shape will be put here when added to the game-board.
+     */
     private int[][] board = new int[25][10];
+    /**
+     * This function counts how many full rows there are.
+     */
     Function countFullRows = board -> (int) Arrays.stream(board).filter(r -> Arrays.stream(r).noneMatch(i -> i == 0)).count();
     /**
      * Getter-method for the game-board

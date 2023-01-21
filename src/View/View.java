@@ -11,8 +11,17 @@ import processing.core.PGraphics;
  */
 
 public class View extends PApplet implements InterfaceView{
+    /**
+     * Stores the distance between the left window border and the drawn game-board
+     */
     int boarderX = 50;
+    /**
+     * Stores the distance between the upper window border and the drawn game-board
+     */
     int boarderY = 50;
+    /**
+     * Variable to store a controller interface.
+     */
     InterfaceController controller;
 
     /**

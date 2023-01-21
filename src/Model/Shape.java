@@ -8,8 +8,17 @@ import java.util.Random;
  * It has internal methods to rotate its shape and move it by changing the X and Y variables.
  */
 public class Shape {
+    /**
+     * Two dimensional array that contains the shape of the tetris-shape
+     */
     private int[][] shape;
+    /**
+     * x saves the x coordiante, y stores the y coordinate and shapeType resembles what type of tetris-shape this is
+     */
     private int x,y,shapeType;
+    /**
+     * Only important for the I shape. It tells if the I shape is standing vertical or lying horizontally.
+     */
     private boolean i_Vertical = true;
 
     /**

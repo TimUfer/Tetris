@@ -11,7 +11,13 @@ import Model.GameStatus;
  */
 
 public class Controller implements InterfaceController{
+    /**
+     * Variable to store a Model object
+     */
     Model model;
+    /**
+     * Variable to store a View Interface
+     */
     InterfaceView view;
 
     public Controller(Model model){

@@ -6,6 +6,9 @@ package Model;
  * makes the current Block fall.
  */
 public class GameLoop extends Thread {
+    /**
+     * Variable to store a Model object.
+     */
     private Model m;
     public GameLoop(Model m){
         this.m = m;
