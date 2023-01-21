@@ -3,12 +3,12 @@ package Model;
 import java.util.Arrays;
 
 /**
- * The Model class manipulates the game. With its Methods like moveShape or rotate,
- * it can influence the position and the orientation of the current Block on the game-board.
- * It also starts the game with the startGame Method.
+ * The Model class manipulates the game. With its methods like moveShape or rotate,
+ * it can influence the position and the orientation of the current block on the game-board.
+ * It also starts the game with the startGame method.
  * Another purpose of this class is the collision-detection.
- * With the three collision-detection Methods its checking if the current Block has reached the Botton,
- * reached the side-borders or has collided with another Block.
+ * With the three collision-detection methods its checking if the current block has reached the bottom,
+ * reached the side-borders or has collided with another block.
  */
 public class Model implements InterfaceModel {
 
@@ -17,9 +17,17 @@ public class Model implements InterfaceModel {
     private GameLoop loop;
     private Shape currentShape = new Shape(3,0);
 
+    /**
+     * The newTetrisPiece-method creates a new random tetris-piece and sets it as currentShape
+     */
     void newTetrisPiece(){
         currentShape = new Shape(3,0);
     }
+
+    /**
+     * The gameOver-method checks if the top of the game-board has been reached
+     * and sets the game-state to game-over
+     */
     void gameOver(){
         if(Arrays.stream(grid.getBoard()[4]).sum() != 0){
             gameState = GameStatus.GAMEOVER;
@@ -44,8 +52,8 @@ public class Model implements InterfaceModel {
     }
 
     /**
-     * Get
-     * @return
+     * Getter-method for the grid / game-board
+     * @return Returns the game-board
      */
     public Board getGrid() {
         return grid;
@@ -59,6 +67,10 @@ public class Model implements InterfaceModel {
         return currentShape;
     }
 
+    /**
+     * This method checks the collision only the part of a tetris shape with a free space beneath it.
+     * @return Returns true if the tetris-shape has collided and returns false id not.
+     */
     boolean checkCollision3(){
         try {
             for (int i = 0; i < currentShape.getShape().length - 1; ++i) {
@@ -168,6 +180,11 @@ public class Model implements InterfaceModel {
             }
         }
     }
+
+    /**
+     * The toString-method displays the game-board array in the console
+     * @return Returns a String that displays the game-board
+     */
     @Override
     public String toString() {
         return Arrays.deepToString(grid.getBoard()).replace("], ", "]\n").replace("[[", "[").replace("]]", "]");

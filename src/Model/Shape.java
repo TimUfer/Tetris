@@ -103,7 +103,8 @@ public class Shape {
     }
 
     /**
-     * This method rotates the shape and makes sure that the bottom "line" is never filled with zeros
+     * This method rotates the shape and makes sure that the bottom "line" is never filled with zeros,
+     * so the shape is always on the bottom of its array.
      */
     void rotate() {
         int[][] rotatedShape = new int[shape.length][shape[0].length];
@@ -128,6 +129,10 @@ public class Shape {
         shape = rotatedShape;
     }
 
+    /**
+     * This method selects one of the seven shapes randomly and sets it as the shape
+     * @return Returns the random selected shape
+     */
     private int[][] selectRandomShape(){
         Random rand = new Random();
         int[][] tempShape = {};

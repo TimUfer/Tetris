@@ -3,6 +3,9 @@ import Model.Model;
 import Controller.Controller;
 import View.View;
 
+/**
+ * This Main class is used to connect Model, View, Controller and execute the game.
+ */
 public abstract class Main {
     public static void main(String[] args) {
         var model = new Model();
