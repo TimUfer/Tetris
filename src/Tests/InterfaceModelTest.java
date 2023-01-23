@@ -24,14 +24,14 @@ class ModelTest {
     @Test
     void testGetBoard(){
         Model m = new Model();
-        assertTrue(m.getGrid().getBoard().getClass() == int[][].class);
+        assertSame(m.getGrid().getBoard().getClass(), int[][].class);
     }
 
     @Test
     void testGetGrid(){
         Model m = new Model();
         Board b = new Board();
-        assertTrue(m.getGrid().getClass() == b.getClass());
+        assertSame(m.getGrid().getClass(), b.getClass());
     }
 
     @Test
