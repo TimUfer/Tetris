@@ -17,11 +17,11 @@ public class Model implements InterfaceModel {
      */
     private GameStatus gameState = GameStatus.MENU;
     /**
-     * Variable for the game-board
+     * Variable for the game-board.
      */
     private Board grid = new Board();
     /**
-     * Variable for the Gameloop.
+     * Variable for the GameLoop.
      */
     private GameLoop loop;
     /**
@@ -30,15 +30,15 @@ public class Model implements InterfaceModel {
     private Shape currentShape = new Shape(3,0);
 
     /**
-     * The newTetrisPiece-method creates a new random tetris-piece and sets it as currentShape
+     * The newTetrisPiece-method creates a new random tetris-piece and sets it as currentShape.
      */
     void newTetrisPiece(){
         currentShape = new Shape(3,0);
     }
 
     /**
-     * The gameOver-method checks if the top of the game-board has been reached
-     * and sets the game-state to game-over
+     * The gameOver-method checks if the top of the game-board has been reached.
+     * and sets the game-state to game-over.
      */
     void gameOver(){
         if(Arrays.stream(grid.getBoard()[4]).sum() != 0){
@@ -47,7 +47,7 @@ public class Model implements InterfaceModel {
     }
 
     /**
-     * This method starts the game in the backend
+     * This method starts the game in the backend.
      */
     public void startGame(){
         gameState = GameStatus.RUNNING;
@@ -56,16 +56,16 @@ public class Model implements InterfaceModel {
     }
 
     /**
-     * This method returns the current game-state (In the MENU, game RUNNING or GAMEOVER)
-     * @return returns the enum value of the game-state
+     * This method returns the current game-state (In the MENU, game RUNNING or GAMEOVER).
+     * @return returns the enum value of the game-state.
      */
     public GameStatus getGameState(){
         return gameState;
     }
 
     /**
-     * Getter-method for the grid / game-board
-     * @return Returns the game-board
+     * Getter-method for the grid / game-board.
+     * @return Returns the game-board.
      */
     public Board getGrid() {
         return grid;
@@ -100,8 +100,8 @@ public class Model implements InterfaceModel {
     }
 
     /**
-     * This method checks is the block has collided with another block
-     * @return Returns wether the block has collided with another block or not
+     * This method checks is the block has collided with another block.
+     * @return Returns wether the block has collided with another block or not.
      */
     boolean checkCollision2() {
         int row = currentShape.getShape().length - 1;
