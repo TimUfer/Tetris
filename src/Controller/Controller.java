@@ -16,7 +16,7 @@ public class Controller implements InterfaceController{
      */
     Model model;
     /**
-     * Variable to store a View Interface
+     * Variable to store a  View Interface
      */
     InterfaceView view;
 
@@ -65,7 +65,7 @@ public class Controller implements InterfaceController{
             case 10 -> {
                 if(model.getGameState() == GameStatus.MENU) model.startGame();
             }
-            default -> System.out.println("No valid input");
+            default -> System.out.println("No valid input. Valid inputs are UP, LEFT, RIGHT, ENTER");
         }
     }
 }

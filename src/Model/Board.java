@@ -30,18 +30,7 @@ public class Board{
     public int[][] getBoard(){
         return board;
     }
-/*
-    void testDraw(){
-        for(int[] ia: board){
-            for(int i : ia){
-                System.out.print(i);
-            }
-            System.out.println("");
-        }
-        System.out.println("");
 
-    }
-*/
     /**
      * Clears a row when it is filled with digits other than zero
      */
