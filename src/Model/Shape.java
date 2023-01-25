@@ -68,6 +68,7 @@ public class Shape {
      * @param input Determines in what direction the shape should move
      * @param gameBoardWidth The width also determines the right-hand boarder for the game-board
      * @param gameBoardHeight The height determines the bottom boarder for the game-board
+     * @param gameboard The game-board in which the shape is moving.
      */
     void move(String input, int gameBoardWidth, int gameBoardHeight , int[][] gameboard) {
         assert input.equals("left") || input.equals("right") || input.equals("down"):"move-method: Wrong input";

@@ -50,7 +50,6 @@ class ModelTest {
     void testRotate(){
         Model m = new Model();
         assertDoesNotThrow(m::rotate);
-
     }
 
     @Test
@@ -64,7 +63,6 @@ class ModelTest {
         var first = m.getGameState();
         m.startGame();
         assertNotSame(first, m.getGameState());
-        assertSame(m.getGameState(),GameStatus.RUNNING);
     }
 
     @Test

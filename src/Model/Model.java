@@ -179,6 +179,9 @@ public class Model implements InterfaceModel {
         addShape(currentShape);
     }
 
+    /**
+     * This method removes the currentShape from the game-board.
+     */
     private void eraseCurrent(){
         for (int i = 0; i < currentShape.getShape().length; i++) {
             for (int j = 0; j < currentShape.getShape()[i].length; j++) {

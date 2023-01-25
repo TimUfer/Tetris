@@ -16,7 +16,7 @@ public class Controller implements InterfaceController{
      */
     Model model;
     /**
-     * Variable to store a  View Interface
+     * Variable to store a View Interface
      */
     InterfaceView view;
 
